@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="he">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>שטיח הרגשות - מרחב לריפוי רגשי בין-דורי</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.22.5/babel.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        direction: rtl;
+        font-family: "Arial", sans-serif;
+      }
+      .emotion-icon {
+        font-size: 1.5rem;
+      }
+      .cta-button {
+        transition: all 0.3s ease;
+      }
+      .cta-button:hover {
+        transform: scale(1.05);
+      }
+      .accordion-header {
+        cursor: pointer;
+      }
+      .accordion-content {
+        display: none;
+      }
+      .accordion-content.open {
+        display: block;
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <div id="root"></div>
+    <script type="text/babel">
+      function Header() {
+        return (
+          <header className="bg-gradient-to-r from-pink-400 to-yellow-400 text-white py-16 text-center">
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">
+              שטיח הרגשות <span className="emotion-icon">🌈</span>
+            </h1>
+            <p className="text-xl md:text-2xl mb-6">
+              מרחב רגשי בבית – מתחילים בקלות
+            </p>
+            <img
+              src="https://via.placeholder.com/600x400?text=הורה+וילד+על+שטיח+הרגשות"
+              alt="הורה וילד על שטיח הרגשות"
+              className="mx-auto mb-6 rounded-lg shadow-lg max-w-md"
+            />
+            <a
+              href="#purchase"
+              className="cta-button inline-block bg-yellow-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg"
+            >
+              אני רוצה להצטרף עכשיו
+            </a>
+          </header>
+        );
+      }
+
+      function ProblemSection() {
+        return (
+          <section className="py-12 px-4 bg-white text-center">
+            <h2 className="text-3xl font-bold mb-6">
+              מרגישים שלא מצליחים להבין את הילד?
+            </h2>
+            <ul className="text-right max-w-2xl mx-auto mb-6">
+              <li className="mb-2">❌ הילד בוכה ואתם מרגישים אבודים?</li>
+              <li className="mb-2">❌ הוא מתפרץ, שותק – ואתם חסרי אונים?</li>
+              <li className="mb-2">❌ רוצים לתקשר אבל לא יודעים איך?</li>
+              <li className="mb-2">❌ חולמים להיות הורים שמחזיקים רגשית?</li>
+            </ul>
+            <p className="text-lg max-w-2xl mx-auto">
+              זה לא אתם – פשוט לא לימדו אותנו איך לדבר רגשות עם הילדים שלנו…
+            </p>
+          </section>
+        );
+      }
+
+      function SolutionSection() {
+        return (
+          <section className="py-12 px-4 bg-gray-50 text-center">
+            <h2 className="text-3xl font-bold mb-6">הכירו את שטיח הרגשות</h2>
+            <img
+              src="https://via.placeholder.com/600x400?text=שטיח+הרגשות+בפעולה"
+              alt="שטיח הרגשות בזמן שימוש"
+              className="mx-auto mb-6 rounded-lg shadow-lg max-w-md"
+            />
+            <p className="text-lg max-w-2xl mx-auto mb-6">
+              כלי ויזואלי וחווייתי שמאפשר לילדים לעמוד על רגש ולדבר אותו
+            </p>
+            <ul className="text-right max-w-2xl mx-auto mb-6">
+              <li className="mb-2">
+                ✅ <span className="emotion-icon">🧠</span> מפתח בינה רגשית
+              </li>
+              <li className="mb-2">
+                ✅ <span className="emotion-icon">👂</span> מעודד הקשבה
+              </li>
+              <li className="mb-2">
+                ✅ <span className="emotion-icon">💬</span> מתאים לגילאי 3-9
+              </li>
+              <li className="mb-2">
+                ✅ <span className="emotion-icon">💞</span> יוצר שיח מקרב
+              </li>
+            </ul>
+            <p className="text-lg max-w-2xl mx-auto">
+              הילד בוחר רגש, אתם מצטרפים, ונוצרת שיחה רגשית אותנטית ב-3 שלבים
+              פשוטים.
+            </p>
+          </section>
+        );
+      }
+
+      function AboutSection() {
+        return (
+          <section className="py-12 px-4 bg-white text-center">
+            <h2 className="text-3xl font-bold mb-6">מי עומדת מאחורי?</h2>
+            <img
+              src="https://via.placeholder.com/150x150?text=עליזה+לידר"
+              alt="עליזה לידר"
+              className="mx-auto mb-6 rounded-full shadow-lg"
+            />
+            <h3 className="text-2xl font-semibold mb-2">
+              עליזה לידר – מטפלת רגשית
+            </h3>
+            <p className="text-lg max-w-2xl mx-auto mb-4">
+              מעל 30 שנה בתחום החינוך והרגש. גננת, מדריכת הורים, מטפלת בתת מודע
+              ומלווה תהליכי ריפוי בין-דוריים.
+            </p>
+            <p className="text-lg max-w-2xl mx-auto">
+              השטיח נולד מתוך חוויה אישית וידע עמוק – ועכשיו הוא כאן כדי לאפשר
+              לכל ילד וילדה לבטא את עצמם ולהרגיש מובנים.
+            </p>
+          </section>
+        );
+      }
+
+      function TestimonialsSection() {
+        return (
+          <section className="py-12 px-4 bg-gray-50 text-center">
+            <h2 className="text-3xl font-bold mb-6">מה אומרים ההורים?</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
+              <div className="p-6 bg-white rounded-lg shadow-lg">
+                <p>"השטיח עזר לבת שלי לדבר על מה שהיא מרגישה בפעם הראשונה."</p>
+                <p className="mt-2 font-semibold">- אמא לילדה בת 5</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-lg">
+                <p>"סוף סוף הבנתי איך להתמודד עם רגש – שלי ושל הילדים שלי."</p>
+                <p className="mt-2 font-semibold">- הורה ל-2 ילדים</p>
+              </div>
+              <div className="p-6 bg-white rounded-lg shadow-lg">
+                <p>"הרגשתי שאני לא לבד – הכלים בקורס שינו לנו את הבית."</p>
+                <p className="mt-2 font-semibold">- משפחה מאזור המרכז</p>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function CourseContentSection() {
+        return (
+          <section className="py-12 px-4 bg-white text-center">
+            <h2 className="text-3xl font-bold mb-6">מה כולל הקורס?</h2>
+            <ul className="text-right max-w-2xl mx-auto mb-6">
+              <li className="mb-2">🎥 סרטוני הדרכה קצרים וברורים</li>
+              <li className="mb-2">📄 דפי עבודה לתרגול</li>
+              <li className="mb-2">🎧 הקלטות לתרגול רגשי</li>
+              <li className="mb-2">💬 דוגמאות מחיי היומיום</li>
+            </ul>
+            <p className="text-lg max-w-2xl mx-auto">
+              בונוס: מתנה בלעדית לנרשמים הראשונים!
+            </p>
+          </section>
+        );
+      }
+
+      function PricingSection() {
+        return (
+          <section id="purchase" className="py-12 px-4 bg-gray-50 text-center">
+            <h2 className="text-3xl font-bold mb-6">מחיר השקה מיוחד</h2>
+            <p className="text-lg mb-4">במקום 690 ₪ – רק 297 ₪!</p>
+            <p className="text-lg mb-6">
+              אפשרות לתשלום ב-3 תשלומים + אחריות מלאה ל-7 ימים
+            </p>
+            <a
+              href="#purchase"
+              className="cta-button inline-block bg-yellow-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg"
+            >
+              אני רוצה את החבילה
+            </a>
+          </section>
+        );
+      }
+
+      function FAQSection() {
+        return (
+          <section className="py-12 px-4 bg-white text-center">
+            <h2 className="text-3xl font-bold mb-6">שאלות נפוצות</h2>
+            <div className="max-w-2xl mx-auto">
+              <div className="mb-4">
+                <h3 className="accordion-header text-lg font-semibold mb-2">
+                  איך זה עובד?
+                </h3>
+                <p className="accordion-content text-right">
+                  הילד עומד על השטיח, בוחר רגש ומשתף. אתם מצטרפים, והשיח הופך
+                  למקרב וטבעי.
+                </p>
+              </div>
+              <div className="mb-4">
+                <h3 className="accordion-header text-lg font-semibold mb-2">
+                  למי זה מתאים?
+                </h3>
+                <p className="accordion-content text-right">
+                  לגילאי 3-9, הורים, גננות, מורות ומטפלות.
+                </p>
+              </div>
+              <div className="mb-4">
+                <h3 className="accordion-header text-lg font-semibold mb-2">
+                  האם מקבלים ליווי?
+                </h3>
+                <p className="accordion-content text-right">
+                  הקורס כולל סרטונים ותרגולים שמלווים אתכם צעד-צעד.
+                </p>
+              </div>
+              <div>
+                <h3 className="accordion-header text-lg font-semibold mb-2">
+                  מה אם לא אהבתי?
+                </h3>
+                <p className="accordion-content text-right">
+                  אחריות מלאה ל-7 ימים – החזר כספי מלא.
+                </p>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Footer() {
+        return (
+          <footer className="py-8 px-4 bg-gray-800 text-white text-center">
+            <img
+              src="https://via.placeholder.com/150x50?text=לוגו"
+              alt="לוגו"
+              className="mx-auto mb-4"
+            />
+            <p className="mb-2">צרו קשר: info@emotionmat.com</p>
+            <div className="flex justify-center space-x-4">
+              <a href="#" className="text-white">
+                📘
+              </a>
+              <a href="#" className="text-white">
+                📷
+              </a>
+              <a href="#" className="text-white">
+                ✈️
+              </a>
+            </div>
+            <a
+              href="#purchase"
+              className="cta-button inline-block bg-yellow-500 text-white px-8 py-4 rounded-full text-lg font-semibold shadow-lg mt-4"
+            >
+              להצטרפות עכשיו
+            </a>
+          </footer>
+        );
+      }
+
+      function App() {
+        return (
+          <div>
+            <Header />
+            <ProblemSection />
+            <SolutionSection />
+            <AboutSection />
+            <TestimonialsSection />
+            <CourseContentSection />
+            <PricingSection />
+            <FAQSection />
+            <Footer />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+
+      // Accordion functionality
+      document.querySelectorAll(".accordion-header").forEach((header) => {
+        header.addEventListener("click", () => {
+          const content = header.nextElementSibling;
+          content.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>

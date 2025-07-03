@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>🌈 שטיח הרגשות - מרחב לריפוי רגשי</title>
+    <script src="https://cdn.jsdelivr.net/npm/react@18.2.0/umd/react.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/react-dom@18.2.0/umd/react-dom.production.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@babel/standalone@7.22.5/babel.min.js"></script>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        font-family: "Arial", sans-serif;
+        background: linear-gradient(135deg, #f0fff4 0%, #e8f4f8 100%);
+      }
+      .hero {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        padding: 80px 0;
+        text-align: center;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero::before {
+        content: "";
+        position: absolute;
+        top: -50%;
+        left: -50%;
+        width: 200%;
+        height: 200%;
+        background: radial-gradient(
+          circle,
+          rgba(255, 255, 255, 0.1) 0%,
+          rgba(255, 255, 255, 0) 70%
+        );
+        animation: pulse 4s ease-in-out infinite;
+      }
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+          opacity: 0.5;
+        }
+        50% {
+          transform: scale(1.05);
+          opacity: 0.3;
+        }
+      }
+      .cta-button {
+        background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+        color: white;
+        padding: 20px 40px;
+        border-radius: 50px;
+        font-size: 1.3rem;
+        font-weight: bold;
+        transition: all 0.3s ease;
+        box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3);
+        position: relative;
+        overflow: hidden;
+      }
+      .cta-button::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          90deg,
+          transparent,
+          rgba(255, 255, 255, 0.2),
+          transparent
+        );
+        transition: left 0.5s ease;
+      }
+      .cta-button:hover::before {
+        left: 100%;
+      }
+      .cta-button:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 12px 35px rgba(255, 107, 107, 0.4);
+      }
+      .section {
+        padding: 80px 0;
+      }
+      .feature-card,
+      .testimonial,
+      .course-feature {
+        transition: transform 0.3s ease;
+      }
+      .feature-card:hover,
+      .testimonial:hover,
+      .course-feature:hover {
+        transform: translateY(-10px);
+      }
+      .accordion-header {
+        cursor: pointer;
+        padding: 15px;
+        background: #f0fff4;
+        border-radius: 10px;
+        margin-bottom: 10px;
+      }
+      .accordion-content {
+        display: none;
+        padding: 15px;
+        background: #fff;
+        border-radius: 10px;
+      }
+      .accordion-content.open {
+        display: block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="text/babel">
+      function Header() {
+        return (
+          <header className="hero">
+            <div className="container max-w-6xl mx-auto px-4">
+              <h1 className="text-4xl md:text-5xl font-bold mb-4 animate-fadeInUp">
+                שטיח הרגשות 🌈
+              </h1>
+              <p className="text-xl md:text-2xl mb-6 animate-fadeInUp animation-delay-300">
+                🌈 מרחב לריפוי רגשי בין-דורי
+              </p>
+              <img
+                src="https://via.placeholder.com/600x400?text=הורה+וילד+על+שטיח+הרגשות"
+                alt="הורה וילד על שטיח הרגשות"
+                className="mx-auto mb-6 rounded-lg shadow-lg max-w-md"
+              />
+              <a href="#purchase" className="cta-button inline-block">
+                אני רוצה להצטרף עכשיו 🎁
+              </a>
+            </div>
+          </header>
+        );
+      }
+
+      function ProblemSection() {
+        return (
+          <section className="section bg-white text-center">
+            <div className="container max-w-6xl mx-auto px-4">
+              <h2 className="text-3xl font-bold mb-6">
+                אתם מכירים את הרגעים האלה?
+              </h2>
+              <div className="bg-red-50 border-r-4 border-red-500 p-6 rounded-lg mb-6">
+                <ul className="text-right">
+                  <li className="mb-2">😔 הילד בוכה ואתם מרגישים אבודים?</li>
+                  <li className="mb-2">
+                    😔 הוא מתפרץ, שותק – ואתם חסרי אונים?
+                  </li>
+                  <li className="mb-2">😔 רוצים לתקשר אבל לא יודעים איך?</li>
+                  <li className="mb-2">
+                    😔 חולמים להיות הורים שמחזיקים רגשית?
+                  </li>
+                </ul>
+              </div>
+              <p className="text-lg max-w-2xl mx-auto">
+                זה לא אתם – פשוט לא לימדו אותנו איך לדבר רגשות עם הילדים שלנו…
+              </p>
+            </div>
+          </section>
+        );
+      }
+
+      function SolutionSection() {
+        return (
+          <section className="section bg-gray-50 text-center">
+            <div className="container max-w-6xl mx-auto px-4">
+              <h2 className="text-3xl font-bold mb-6">
+                הכירו את שטיח הרגשות 🧩
+              </h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-6">
+                <div>
+                  <h3 className="text-2xl font-semibold mb-4 text-green-600">
+                    כלי ויזואלי וחווייתי
+                  </h3>
+                  <p className="text-lg mb-4">
+                    הילד עומד על השטיח, בוחר רגש ומשתף. אתם מצטרפים, והשיח הופך
+                    למקרב וטבעי.
+                  </p>
+                  <div className="bg-green-50 border-r-4 border-green-500 p-6 rounded-lg">
+                    <p className="text-lg">
+                      המעבר בין רגשות מלמד את הילד שתסכול הוא רגע חולף – ויש
+                      רגעים נוספים שמשנים אותו.
+                    </p>
+                  </div>
+                </div>
+                <div>
+                  <video
+                    src="https://via.placeholder.com/600x400.mp4?text=שטיח+הרגשות+בפעולה"
+                    controls
+                    className="mx-auto rounded-lg shadow-lg max-w-md"
+                  >
+                    דפדפן זה אינו תומך בנגן וידאו.
+                  </video>
+                  <p className="text-sm mt-2">
+                    הדגמה: כך נראה השטיח בזמן שימוש
+                  </p>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="feature-card bg-white p-6 rounded-lg shadow-lg">
+                  <div className="text-4xl mb-4">🧠</div>
+                  <h4 className="text-xl font-semibold">מפתח בינה רגשית</h4>
+                  <p>לגילאי 3-9, קריטיים לצמיחה רגשית</p>
+                </div>
+                <div className="feature-card bg-white p-6 rounded-lg shadow-lg">
+                  <div className="text-4xl mb-4">👥</div>
+                  <h4 className="text-xl font-semibold">להורים וחינוכאים</h4>
+                  <p>גננות, מורות ומטפלות</p>
+                </div>
+                <div className="feature-card bg-white p-6 rounded-lg shadow-lg">
+                  <div className="text-4xl mb-4">💬</div>
+                  <h4 className="text-xl font-semibold">מעודד שיח מקרב</h4>
+                  <p>פתרון קונפליקטים והבעה אותנטית</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function AboutSection() {
+        return (
+          <section className="section bg-white text-center">
+            <div className="container max-w-6xl mx-auto px-4">
+              <h2 className="text-3xl font-bold mb-6">מי עומדת מאחורי?</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                <div>
+                  <img
+                    src="https://via.placeholder.com/200x200?text=עליזה+לידר"
+                    alt="עליזה לידר"
+                    className="mx-auto rounded-full shadow-lg"
+                  />
+                </div>
+                <div className="text-right">
+                  <h3 className="text-2xl font-semibold mb-2">
+                    עליזה לידר – מטפלת רגשית
+                  </h3>
+                  <p className="text-lg mb-4">
+                    מעל 30 שנה בתחום החינוך והרגש. גננת, מדריכת הורים, מטפלת בתת
+                    מודע ומלווה תהליכי ריפוי בין-דוריים. השטיח נולד מתוך חוויה
+                    אישית וידע עמוק – ועכשיו הוא יוצא לעולם כדי לאפשר לכל ילד
+                    וילדה לבטא את עצמם ולהרגיש מובנים.
+                  </p>
+                  <p className="text-lg">
+                    השטיח נולד מתוך חוויה אישית וידע עמוק – ועכשיו הוא כאן כדי
+                    לאפשר לכל ילד וילדה לבטא את עצמם ולהרגיש מובנים.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function TestimonialsSection() {
+        return (
+          <section className="section bg-gray-50 text-center">
+            <div className="container max-w-6xl mx-auto px-4">
+              <h2 className="text-3xl font-bold mb-6">מה אומרים ההורים? 💬</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="testimonial bg-white p-6 rounded-lg shadow-lg relative">
+                  <img
+                    src="https://via.placeholder.com/50x50?text=אמא"
+                    alt="אמא"
+                    className="absolute top-4 left-4 rounded-full"
+                  />
+                  <p className="italic">
+                    "השטיח עזר לבת שלי לדבר על מה שהיא מרגישה בפעם הראשונה."
+                  </p>
+                  <p className="mt-2 font-semibold">- אמא לילדה בת 5</p>
+                </div>
+                <div className="testimonial bg-white p-6 rounded-lg shadow-lg relative">
+                  <img
+                    src="https://via.placeholder.com/50x50?text=הורה"
+                    alt="הורה"
+                    className="absolute top-4 left-4 rounded-full"
+                  />
+                  <p className="italic">
+                    "סוף סוף הבנתי איך להתמודד עם רגש – שלי ושל הילדים שלי."
+                  </p>
+                  <p className="mt-2 font-semibold">- הורה ל-2 ילדים</p>
+                </div>
+                <div className="testimonial bg-white p-6 rounded-lg shadow-lg relative">
+                  <img
+                    src="https://via.placeholder.com/50x50?text=משפחה"
+                    alt="משפחה"
+                    className="absolute top-4 left-4 rounded-full"
+                  />
+                  <p className="italic">
+                    "הרגשתי שאני לא לבד – הכלים בקורס שינו לנו את הבית."
+                  </p>
+                  <p className="mt-2 font-semibold">- משפחה מאזור המרכז</p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function CourseContentSection() {
+        return (
+          <section className="section bg-white text-center">
+            <div className="container max-w-6xl mx-auto px-4">
+              <h2 className="text-3xl font-bold mb-6">מה כולל הקורס? 🎓</h2>
+              <div className="bg-blue-50 p-6 rounded-lg mb-6">
+                <p className="text-lg mb-4">
+                  "להשתמש בשטיח הרגשות – ולהרגיש ביטחון רגשי בבית"
+                </p>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="course-feature bg-white p-4 rounded-lg shadow-lg">
+                    <span className="text-2xl">🎯</span> איך להוביל שיח רגשי
+                    בצורה טבעית
+                  </div>
+                  <div className="course-feature bg-white p-4 rounded-lg shadow-lg">
+                    <span className="text-2xl">🎯</span> איך להגיב לרגשות הילד
+                    בלי להילחץ
+                  </div>
+                  <div className="course-feature bg-white p-4 rounded-lg shadow-lg">
+                    <span className="text-2xl">🎯</span> איך לשלב את השטיח
+                    ביומיום
+                  </div>
+                  <div className="course-feature bg-white p-4 rounded-lg shadow-lg">
+                    <span className="text-2xl">🎯</span> איך לשמש מודלינג רגשי
+                    אמיתי
+                  </div>
+                </div>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div className="course-feature bg-white p-4 rounded-lg shadow-lg">
+                  <span className="text-2xl">🎥</span> סרטוני הדרכה קצרים
+                </div>
+                <div className="course-feature bg-white p-4 rounded-lg shadow-lg">
+                  <span className="text-2xl">📄</span> דפי עבודה
+                </div>
+                <div className="course-feature bg-white p-4 rounded-lg shadow-lg">
+                  <span className="text-2xl">🎧</span> הקלטות לתרגול רגשי
+                </div>
+                <div className="course-feature bg-white p-4 rounded-lg shadow-lg">
+                  <span className="text-2xl">💬</span> דוגמאות מחיי היומיום
+                </div>
+              </div>
+              <p className="text-lg mt-6">
+                בונוס: מתנה בלעדית לנרשמים הראשונים!
+              </p>
+            </div>
+          </section>
+        );
+      }
+
+      function PricingSection() {
+        return (
+          <section
+            id="purchase"
+            className="section bg-gradient-to-r from-pink-400 to-yellow-400 text-white text-center"
+          >
+            <div className="container max-w-6xl mx-auto px-4">
+              <h2 className="text-3xl font-bold mb-6">מחיר השקה מיוחד 🎁</h2>
+              <div className="bg-white text-gray-800 p-8 rounded-lg shadow-lg max-w-md mx-auto">
+                <p className="text-lg mb-4">
+                  במקום 690 ₪ –{" "}
+                  <span className="text-red-600 text-2xl font-bold">
+                    רק 297 ₪!
+                  </span>
+                </p>
+                <div className="bg-yellow-100 text-yellow-800 p-4 rounded-lg mb-6">
+                  <h3 className="text-lg font-semibold">
+                    ⏰ הזדמנות מוגבלת לנרשמים הראשונים!
+                  </h3>
+                  <p>הצטרפו עכשיו וקבלו מתנה בלעדית</p>
+                </div>
+                <ul className="text-right mb-6">
+                  <li className="mb-2">🟡 שטיח רגשות מעוצב</li>
+                  <li className="mb-2">🟡 קורס דיגיטלי מלא</li>
+                  <li className="mb-2">🟡 גישה מיידית לתכנים</li>
+                  <li className="mb-2">🟡 מתנה בלעדית לנרשמים הראשונים</li>
+                </ul>
+                <p className="text-sm mb-6">
+                  אפשרות לתשלום ב-3 תשלומים + אחריות מלאה ל-7 ימים
+                </p>
+                <a href="#purchase" className="cta-button inline-block">
+                  הזמינו עכשיו 🛒
+                </a>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function FAQSection() {
+        return (
+          <section className="section bg-white text-center">
+            <div className="container max-w-6xl mx-auto px-4">
+              <h2 className="text-3xl font-bold mb-6">שאלות נפוצות ❓</h2>
+              <div className="max-w-2xl mx-auto">
+                <div className="mb-4">
+                  <h3 className="accordion-header text-lg font-semibold">
+                    איך זה עובד?
+                  </h3>
+                  <p className="accordion-content text-right">
+                    הילד עומד על השטיח, בוחר רגש ומשתף. אתם מצטרפים, והשיח הופך
+                    למקרב וטבעי.
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <h3 className="accordion-header text-lg font-semibold">
+                    למי זה מתאים?
+                  </h3>
+                  <p className="accordion-content text-right">
+                    לגילאי 3-9, הורים, גננות, מורות ומטפלות.
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <h3 className="accordion-header text-lg font-semibold">
+                    כמה זמן לוקח לראות תוצאות?
+                  </h3>
+                  <p className="accordion-content text-right">
+                    תלוי בקצב שלכם, אבל משפחות מדווחות על שינוי תוך שבועות
+                    ספורים!
+                  </p>
+                </div>
+                <div className="mb-4">
+                  <h3 className="accordion-header text-lg font-semibold">
+                    האם זה מתאים לילדים עם קשיים רגשיים?
+                  </h3>
+                  <p className="accordion-content text-right">
+                    כן, השטיח תוכנן לעזור לילדים לבטא רגשות בצורה בטוחה ופשוטה.
+                  </p>
+                </div>
+                <div>
+                  <h3 className="accordion-header text-lg font-semibold">
+                    מה אם לא אהבתי?
+                  </h3>
+                  <p className="accordion-content text-right">
+                    אחריות מלאה ל-7 ימים – החזר כספי מלא.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      function Footer() {
+        return (
+          <footer className="py-8 px-4 bg-gray-800 text-white text-center">
+            <img
+              src="https://via.placeholder.com/150x50?text=לוגו"
+              alt="לוגו"
+              className="mx-auto mb-4"
+            />
+            <p className="mb-2">צרו קשר: info@emotionmat.com</p>
+            <div className="flex justify-center space-x-4">
+              <a href="#" className="text-white">
+                📘
+              </a>
+              <a href="#" className="text-white">
+                📷
+              </a>
+              <a href="#" className="text-white">
+                ✈️
+              </a>
+            </div>
+            <a href="#purchase" className="cta-button inline-block mt-4">
+              להצטרפות עכשיו 🌟
+            </a>
+          </footer>
+        );
+      }
+
+      function App() {
+        return (
+          <div>
+            <style>{`
+            .animate-fadeInUp { animation: fadeInUp 1s ease-out; }
+            .animation-delay-300 { animation-delay: 0.3s; }
+            @keyframes fadeInUp {
+              from { opacity: 0; transform: translateY(30px); }
+              to { opacity: 1; transform: translateY(0); }
+            }
+          `}</style>
+            <Header />
+            <ProblemSection />
+            <SolutionSection />
+            <AboutSection />
+            <TestimonialsSection />
+            <CourseContentSection />
+            <PricingSection />
+            <FAQSection />
+            <Footer />
+          </div>
+        );
+      }
+
+      ReactDOM.render(<App />, document.getElementById("root"));
+
+      // Accordion functionality
+      document.querySelectorAll(".accordion-header").forEach((header) => {
+        header.addEventListener("click", () => {
+          const content = header.nextElementSibling;
+          content.classList.toggle("open");
+        });
+      });
+    </script>
+  </body>
+</html>
